@@ -43,7 +43,6 @@ public class AccountServiceImpl implements AccountService {
         return Optional.ofNullable(accountRepository.findById(accountId));
     }
 
-    // Novo método para transferência
     public Optional<Account> transfer(String originId, String destinationId, int amount) {
         Optional<Account> originOpt = withdraw(originId, amount);
         if (!originOpt.isPresent()) {
