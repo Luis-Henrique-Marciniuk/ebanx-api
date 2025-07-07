@@ -3,9 +3,11 @@ package com.ebanx.challenge.application.service;
 import com.ebanx.challenge.domain.model.Account;
 import com.ebanx.challenge.domain.port.in.AccountService;
 import com.ebanx.challenge.domain.port.out.AccountRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class AccountServiceImpl implements AccountService {
     private final AccountRepository accountRepository;
 
@@ -14,19 +16,18 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Optional<Account> findAccount(String accountId) {
-        return Optional.ofNullable(accountRepository.findById(accountId));
-    }
     public Account deposit(String accountId, int amount) {
         Account account = accountRepository.findById(accountId);
         if (account == null) {
-            account = new Account(accountId, 0);
+            account = new Account(accountId, amount);
+        } else {
+            account.deposit(amount);
         }
-        account.deposit(amount);
         accountRepository.save(account);
         return account;
     }
 
+    @Override
     public Optional<Account> withdraw(String accountId, int amount) {
         Account account = accountRepository.findById(accountId);
         if (account == null || account.getBalance() < amount) {
@@ -35,5 +36,26 @@ public class AccountServiceImpl implements AccountService {
         account.withdraw(amount);
         accountRepository.save(account);
         return Optional.of(account);
+    }
+
+    @Override
+    public Optional<Account> findAccount(String accountId) {
+        return Optional.ofNullable(accountRepository.findById(accountId));
+    }
+
+    // Novo método para transferência
+    public Optional<Account> transfer(String originId, String destinationId, int amount) {
+        Optional<Account> originOpt = withdraw(originId, amount);
+        if (!originOpt.isPresent()) {
+            return Optional.empty();
+        }
+        Account destination = accountRepository.findById(destinationId);
+        if (destination == null) {
+            destination = new Account(destinationId, amount);
+        } else {
+            destination.deposit(amount);
+        }
+        accountRepository.save(destination);
+        return Optional.of(destination);
     }
 }

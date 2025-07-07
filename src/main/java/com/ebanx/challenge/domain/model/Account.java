@@ -17,7 +17,6 @@ public class Account {
         return balance;
     }
 
-    // ✅ Método deposit deve ser assim:
     public void deposit(int amount) {
         this.balance += amount;
     }

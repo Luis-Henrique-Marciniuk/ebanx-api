@@ -1,6 +1,10 @@
-C:\Users\luis\Documents\ebanx-api\src\main\java\com\ebanx\challenge\controller\AccountController.java
-C:\Users\luis\Documents\ebanx-api\src\main\java\com\ebanx\challenge\dto\EventRequest.java
-C:\Users\luis\Documents\ebanx-api\src\main\java\com\ebanx\challenge\dto\EventResponse.java
+C:\Users\luis\Documents\ebanx-api\src\main\java\com\ebanx\challenge\adapter\in\web\AccountController.java
+C:\Users\luis\Documents\ebanx-api\src\main\java\com\ebanx\challenge\adapter\in\web\EventRequest.java
+C:\Users\luis\Documents\ebanx-api\src\main\java\com\ebanx\challenge\adapter\in\web\EventResponse.java
+C:\Users\luis\Documents\ebanx-api\src\main\java\com\ebanx\challenge\adapter\in\web\ResetController.java
+C:\Users\luis\Documents\ebanx-api\src\main\java\com\ebanx\challenge\adapter\out\memory\AccountRepositoryInMemory.java
+C:\Users\luis\Documents\ebanx-api\src\main\java\com\ebanx\challenge\application\service\AccountServiceImpl.java
+C:\Users\luis\Documents\ebanx-api\src\main\java\com\ebanx\challenge\domain\model\Account.java
+C:\Users\luis\Documents\ebanx-api\src\main\java\com\ebanx\challenge\domain\port\in\AccountService.java
+C:\Users\luis\Documents\ebanx-api\src\main\java\com\ebanx\challenge\domain\port\out\AccountRepository.java
 C:\Users\luis\Documents\ebanx-api\src\main\java\com\ebanx\challenge\EbanxApiApplication.java
-C:\Users\luis\Documents\ebanx-api\src\main\java\com\ebanx\challenge\model\Account.java
-C:\Users\luis\Documents\ebanx-api\src\main\java\com\ebanx\challenge\service\AccountService.java
