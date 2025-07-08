@@ -17,12 +17,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Account deposit(String accountId, int amount) {
-        Account account = accountRepository.findById(accountId);
-        if (account == null) {
-            account = new Account(accountId, amount);
-        } else {
-            account.deposit(amount);
-        }
+        Account account = createOrDeposit(accountRepository.findById(accountId), accountId, amount);
         accountRepository.save(account);
         return account;
     }
@@ -48,13 +43,17 @@ public class AccountServiceImpl implements AccountService {
         if (!originOpt.isPresent()) {
             return Optional.empty();
         }
-        Account destination = accountRepository.findById(destinationId);
-        if (destination == null) {
-            destination = new Account(destinationId, amount);
-        } else {
-            destination.deposit(amount);
-        }
+        Account destination = createOrDeposit(accountRepository.findById(destinationId), destinationId, amount);
         accountRepository.save(destination);
         return Optional.of(destination);
+    }
+
+    private Account createOrDeposit(Account account, String accountId, int amount) {
+        if (account == null) {
+            return new Account(accountId, amount);
+        } else {
+            account.deposit(amount);
+            return account;
+        }
     }
 }

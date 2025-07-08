@@ -1,5 +1,10 @@
 package com.ebanx.challenge.domain.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Account {
     private String id;
     private int balance;
@@ -7,14 +12,6 @@ public class Account {
     public Account(String id, int balance) {
         this.id = id;
         this.balance = balance;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public int getBalance() {
-        return balance;
     }
 
     public void deposit(int amount) {
